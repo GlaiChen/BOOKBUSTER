@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i4oo58Qbq21P6mmt2af6n+0FWSxStulgwH3jze2DZ+kaPCRe3pF8LJNcCcT4/vstYtkofTDzz5IjW6DtOwQbsw==",
+  "dgSpecHash": "ysVLv7fBW7haQflA2ZXQ5LD5gZXMYjfvjJ89s8AAtn9bS6eFLq0R6WyiDowCU1X5L7lyLYFi8adRNkJfa2UDqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj",
+  "projectFilePath": "C:\\Users\\97254\\Documents\\GitHub\\Store\\BooksStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\97254\\.nuget\\packages\\facebook\\7.0.6\\facebook.7.0.6.nupkg.sha512",
     "C:\\Users\\97254\\.nuget\\packages\\jquery\\1.12.4\\jquery.1.12.4.nupkg.sha512",

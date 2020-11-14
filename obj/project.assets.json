@@ -9601,11 +9601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj",
+      "projectUniqueName": "C:\\Users\\97254\\Documents\\GitHub\\Store\\BooksStore.csproj",
       "projectName": "BooksStore",
-      "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj",
+      "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\Store\\BooksStore.csproj",
       "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\obj\\",
+      "outputPath": "C:\\Users\\97254\\Documents\\GitHub\\Store\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
