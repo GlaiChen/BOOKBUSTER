@@ -1,20 +1,89 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj": {}
+    "C:\\Chen\\Git\\Store\\BooksStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj": {
+    "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj",
-        "projectName": "BooksStore",
-        "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\BooksStore.csproj",
-        "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\97254\\Documents\\GitHub\\Bookbuster\\obj\\",
+        "projectUniqueName": "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj",
+        "projectName": "BooksStoreML.Model",
+        "projectPath": "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj",
+        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+        "outputPath": "C:\\Chen\\Git\\BooksStoreML.Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[1.5.0-preview, )"
+            },
+            "Microsoft.ML.Recommender": {
+              "target": "Package",
+              "version": "[0.17.0-preview, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Chen\\Git\\Store\\BooksStore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Chen\\Git\\Store\\BooksStore.csproj",
+        "projectName": "BooksStore",
+        "projectPath": "C:\\Chen\\Git\\Store\\BooksStore.csproj",
+        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+        "outputPath": "C:\\Chen\\Git\\Store\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +96,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
-                "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj"
+              "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
+                "projectPath": "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj"
               }
             }
           }
@@ -103,70 +172,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj",
-        "projectName": "BooksStoreML.Model",
-        "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj",
-        "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netstandard2.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netstandard2.0": {
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netstandard2.0": {
-          "dependencies": {
-            "Microsoft.ML": {
-              "target": "Package",
-              "version": "[1.5.0-preview2, )"
-            },
-            "Microsoft.ML.Recommender": {
-              "target": "Package",
-              "version": "[0.17.0-preview2, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

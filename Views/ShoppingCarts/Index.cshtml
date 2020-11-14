@@ -22,46 +22,6 @@
 </section>
 <!-- Banner Section End -->
 
-<!-- Products Cart Begin
-<div class="card-body">
-
-    @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
-    {
-        var Subtotal = item.Book.Price * item.Quantity;
-
-        <div class="row-card">
-            <div class="col-12 col-sm-12 col-md-2 text-center">
-                <img class="img-responsive" src="@item.Book.PictureName" alt="prewiew" width="120" height="180">
-            </div>
-            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                <h4 class="product-name"><strong>@item.Book.BookName</strong></h4>
-                <h4>
-                    <small>@item.Book.Summary</small>
-                </h4>
-            </div>
-            <div class="col-12 col-sm-12 text-sm-center col-md-3 text-md-right row-card">
-                <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                    <h4>@Subtotal.ToString("c")<span class="text-muted"> </span></h4>
-                </div>
-                <div class="col-4 col-sm-4 col-md-4">
-                    <div class="quantity">
-                        <input type="number" step="1" max="99" min="1" value="@item.Quantity" title="Qty" class="qty" size="4" readonly="readonly">
-                    </div>
-                </div>
-                <div class="col-2 col-sm-2 col-md-2 text-right">
-                    <a class="btn btn-secondary" asp-controller="ShoppingCarts"
-                       asp-action="RemoveFromShoppingCart" asp-route-bookId="@item.Book.BookId" style="width: 50px; margin-left: 40px; padding-top: 10px;">
-                        <i class="fa fa-trash-o mt-0" aria-hidden="true" size="6"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    }
-
-</div>
-    <!-- Products Cart End -->
-<!--Cart Products Start -->
-
 <table class="table">
     <thead>
         <tr>
