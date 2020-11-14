@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BooksStore.Migrations
 {
     [DbContext(typeof(BooksStoreContext))]
-    [Migration("20201114165039_InitialCreate")]
+    [Migration("20201114193349_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,11 @@ namespace BooksStore.Migrations
                     b.Property<string>("Publication")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");

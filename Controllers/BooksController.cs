@@ -62,6 +62,10 @@ namespace BooksStore.Controllers
             return View();
         }
 
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> Create(IFormFile file, [Bind("BookId,BookName,Author,Publication,Price,Summary,PictureName,GenreId")] Book book)
         {
@@ -95,11 +99,15 @@ namespace BooksStore.Controllers
                 {
                     ModelState.AddModelError("", "The book already exist");
                 }
-                
+
             }
             ViewData["GenreID"] = new SelectList(_context.Genres, "GenreId", "GenreName", book.GenreId);
             return View(book);
         }
+
+
+
+
 
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -123,7 +131,7 @@ namespace BooksStore.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookId,BookName,Author,Publication,Price,Summary,PictureName,GenreId")] Book book, IFormFile file)
+        public async Task<IActionResult> Edit(int id, byte[] rowVersion, [Bind("BookId,BookName,Author,Publication,Price,Summary,PictureName,GenreId")] Book book, IFormFile file)
         {
             if (id != book.BookId)
             {
@@ -148,23 +156,82 @@ namespace BooksStore.Controllers
                         await file.CopyToAsync(stream);
                     }
                 }
-                try
+
+
+                var bookToUpdate = await _context.Books.FindAsync(id);
+
+                if (bookToUpdate == null)
                 {
-                    _context.Update(book);
-                    await _context.SaveChangesAsync();
+                    Book deletedBook = new Book();
+                    await TryUpdateModelAsync(deletedBook);
+                    ModelState.AddModelError(string.Empty,
+                        "Unable to save changes. The book was deleted by another user.");
+                    ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName", deletedBook.GenreId);
+                    return View(deletedBook);
                 }
-                catch (DbUpdateConcurrencyException)
+
+                _context.Entry(bookToUpdate).Property("RowVersion").OriginalValue = rowVersion;
+
+                if (await TryUpdateModelAsync<Book>(
+                    bookToUpdate,
+                    "",
+                    s => s.BookName, s => s.Author, s => s.Price, s => s.GenreId, s => s.Publication, s => s.Summary))
                 {
-                    if (!BookExists(book.BookId))
+                    try
                     {
-                        return NotFound();
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
                     }
-                    else
+                    catch (DbUpdateConcurrencyException ex)
                     {
-                        throw;
+                        var exceptionEntry = ex.Entries.Single();
+                        var clientValues = (Book)exceptionEntry.Entity;
+                        var databaseEntry = exceptionEntry.GetDatabaseValues();
+                        if (databaseEntry == null)
+                        {
+                            ModelState.AddModelError(string.Empty,
+                                "Unable to save changes. The book was deleted by another user.");
+                        }
+                        else
+                        {
+                            var databaseValues = (Book)databaseEntry.ToObject();
+
+                            if (databaseValues.BookName != clientValues.BookName)
+                            {
+                                ModelState.AddModelError("Name", $"Current value: {databaseValues.BookName}");
+                            }
+                            if (databaseValues.Price != clientValues.Price)
+                            {
+                                ModelState.AddModelError("Price", $"Current value: {databaseValues.Price:c}");
+                            }
+
+                            if (databaseValues.Publication != clientValues.Publication)
+                            {
+                                ModelState.AddModelError("Publication", $"Current value: {databaseValues.Publication:e}");
+                            }
+                            if (databaseValues.Summary != clientValues.Summary)
+                            {
+                                ModelState.AddModelError("Summary", $"Current value: {databaseValues.Summary:f}");
+                            }
+
+                            if (databaseValues.Genre != clientValues.Genre)
+                            {
+                                Genre databaseGenre = await _context.Genres.FirstOrDefaultAsync(i => i.GenreId == databaseValues.GenreId);
+                                ModelState.AddModelError("GenreName", $"Current value: {databaseGenre?.GenreName}");
+                            }
+
+                            ModelState.AddModelError(string.Empty, "The record you attempted to edit "
+                                    + "was modified by another user after you got the original value. The "
+                                    + "edit operation was canceled and the current values in the database "
+                                    + "have been displayed. If you still want to edit this record, click "
+                                    + "the Save button again. Otherwise click the Back to List hyperlink.");
+                            bookToUpdate.RowVersion = (byte[])databaseValues.RowVersion;
+                            ModelState.Remove("RowVersion");
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName", bookToUpdate.GenreId);
+                return View(bookToUpdate);
             }
             ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName", book.GenreId);
             return View(book);
@@ -300,7 +367,7 @@ namespace BooksStore.Controllers
 
 
         // GET: Books/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? concurrencyError)
         {
             if (id == null)
             {
@@ -308,11 +375,26 @@ namespace BooksStore.Controllers
             }
 
             var book = await _context.Books
-                .Include(b => b.Genre)
+                .Include(b => b.Genre).AsNoTracking()
                 .FirstOrDefaultAsync(m => m.BookId == id);
             if (book == null)
             {
+                if (concurrencyError.GetValueOrDefault())
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
                 return NotFound();
+            }
+
+            if (concurrencyError.GetValueOrDefault())
+            {
+                ViewData["ConcurrencyErrorMessage"] = "The record you attempted to delete "
+                    + "was modified by another user after you got the original values. "
+                    + "The delete operation was canceled and the current values in the "
+                    + "database have been displayed. If you still want to delete this "
+                    + "record, click the Delete button again. Otherwise "
+                    + "click the Back to List hyperlink.";
             }
 
             return View(book);
@@ -321,15 +403,25 @@ namespace BooksStore.Controllers
         // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Book book)
         {
-            var book = await _context.Books.FindAsync(id);
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                if (await _context.Books.AnyAsync(m => m.BookId == book.BookId))
+                {
+                    _context.Books.Remove(book);
+                    await _context.SaveChangesAsync();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateConcurrencyException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction(nameof(Delete), new { concurrencyError = true, id = book.BookId });
+            }
         }
 
-   
+
 
         private bool BookExists(int id)
         {

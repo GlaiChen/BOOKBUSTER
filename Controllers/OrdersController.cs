@@ -86,9 +86,9 @@ namespace BooksStore.Controllers
                         select new
                         {
                             // Changes
-                            Id = id++,
+                            //Id = id++,
                             Book = p.Book.BookName,
-                            Quantity = p.Quantity,
+                            //Quantity = p.Quantity,
                             Price = p.Book.Price * p.Quantity
                         };
 
