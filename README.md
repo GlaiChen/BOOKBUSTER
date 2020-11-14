@@ -1,1 +1,2 @@
-# Store
+# BookStore
+ Web App's Final Project :)
