@@ -56,23 +56,6 @@ namespace BooksStore.Controllers
             return ViewComponent("ShoppingCartSummary");
         }
 
-        // GET: ShoppingCarts/Details/5
-        //public async Task<IActionResult> Details(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var shoppingCart = await _context.ShoppingCart
-        //        .FirstOrDefaultAsync(m => m.ShoppingCartId == id);
-        //    if (shoppingCart == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(shoppingCart);
-        //}
         public async Task<RedirectToActionResult> RemoveFromShoppingCart(int bookId)
         {
             var selectedBook = GetAllBooks.FirstOrDefault(c => c.BookId == bookId);
@@ -119,13 +102,7 @@ namespace BooksStore.Controllers
             return RedirectToAction("Index");
         }
 
-        //private bool ShoppingCartExists(string id)
-        //{
-        //    return _context.ShoppingCart.Any(e => e.ShoppingCartId == id);
-        //}
-
         // Helpers
-
         public IEnumerable<Book> GetAllBooks
         {
             get
@@ -135,14 +112,14 @@ namespace BooksStore.Controllers
         }
 
 
-        // Add a product to the Cart and Save it (the item) in the Data Base, ShoppingCartItems table
+        // Add a book to the Cart and Save it (the item) in the Data Base, ShoppingCartItems table
         public void AddToCart(Book book, int quantity)
         {
 
             var shoppingCartItem = _context.ShoppingCartItems.SingleOrDefault
                 (s => s.Book.BookId == book.BookId && s.ShoppingCartId == _shoppingCart.ShoppingCartId);
 
-            // if If the condition is true: We are creating a new instance of ShoppingCartItem about the Product (not instance of Shopping Cart)
+            // if If the condition is true: We are creating a new instance of ShoppingCartItem about the Book (not instance of Shopping Cart)
             if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem
@@ -164,7 +141,7 @@ namespace BooksStore.Controllers
         }
 
 
-        //Remove an Item (Product) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
+        //Remove an Item (Book) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
         public async Task<int> RemoveFromCart(Book book)
         {
             var shoppingCartItem = await _context.ShoppingCartItems.SingleOrDefaultAsync
@@ -190,7 +167,7 @@ namespace BooksStore.Controllers
             return localAmount;
         }
 
-        //Adds an Item (Product) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
+        //Adds an Item (Book) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
         public async Task<int> AddToCart(Book book)
         {
             var shoppingCartItem = await _context.ShoppingCartItems.SingleOrDefaultAsync
@@ -208,7 +185,7 @@ namespace BooksStore.Controllers
             return localAmount;
         }
 
-        //Clears an Item (Product) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
+        //Clears an Item (Book) From the Cart and Save Changes in the Data Base, ShoppingCartItems table
         public async Task<int> ClearFromCart(Book book)
         {
             var shoppingCartItem = await _context.ShoppingCartItems.SingleOrDefaultAsync

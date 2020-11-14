@@ -5,9 +5,6 @@
 @inject Microsoft.AspNetCore.Authorization.IAuthorizationService authorizationService;
 
 @model BooksStore.ViewModels.BookListViewModel
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="~/css/Products/Product.css" />
-<link type="text/css" rel="stylesheet" href="~/css/Recommended/recommended.css" />
 
 <section class="banner-section set-bg" data-setbg="img/bluebanner.jpg">
     <div class="container">
@@ -43,59 +40,16 @@
                     }
                 }
             }
-            <!-- filter -->
-            @*@if (Model.CurrentGenre != "All books" && Model.CurrentGenre != "Search Results")
-        {
-            <div id="aside" class="col-md-3">
-                <form id="FilterForm" asp-action="Filter" method="get">
-                    <input type="hidden" name="productType" value="@Model.CurrentGenre" />
-                    <aside class="aside">
-                        <h3 class="aside-title">Price</h3>
-                        <div class="price-filter">
-                            <div id="price-slider"></div>
-                            <div class="input-number price-min">
-                                <input name="minPrice" id="price-min" type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
-                            </div>
-                            <span>-</span>
-                            <div class="input-number price-max">
-                                <input name="maxPrice" id="price-max" type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
-                            </div>
-                        </div>
-                    </aside>
-                    <aside class="aside submit">
-                        <input id="FilterButton" type="button" value="Filter" class="primary-btn" />
-                        <a asp-action="List" asp-route-productType="@Model.CurrentGenre">Clear filter</a>
-                    </aside>
-                </form>
-            </div>
-        }*@
-            <!-- /filter -->
-            <!-- Product thumb imgs -->
-            <!-- <div id="thumb-imgs" class="col-md-2">
-         <partial name="_pictureView" model="@Model" />
-     </div>-->
-            <!-- /Product thumb imgs -->
-            <!-- Product main img -->
+            
             <div class="col-md-7">
                 <div id="main-imgs">
-                    <!-- <partial name="_pictureView" model="product" /> -->
+                    
                     <partial name="_detailsView" model="@Model" />
                 </div>
-                <!-- /Product main img -->
-                <!-- /row -->
+                
             </div>
 
         </div>
-        <!-- /container -->
-        @*<div class="row recommended-row">
-            <div id="recommended">
-                @await Component.InvokeAsync("RecommendedBooks", new { Book = Model.Books.First()})
-            </div>
-        </div>*@
     </div>
 </div>
 

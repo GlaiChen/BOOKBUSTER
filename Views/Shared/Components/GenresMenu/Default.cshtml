@@ -7,9 +7,6 @@
 }
 
 <ul style="@isOpen">
-    @*<li><a href="#">Sale</a></li>
-    <li><a href="#">New on the shelf</a></li>
-    <li><a href="#">Best sellers</a></li>*@
     @foreach (var genre in Model)
     {
         <li><a asp-controller="Books" asp-action="List" asp-route-genreName="@genre.GenreName">@genre.GenreName</a></li>
