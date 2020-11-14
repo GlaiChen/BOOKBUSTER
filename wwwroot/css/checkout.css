@@ -165,9 +165,12 @@ img {
 }
 
     .content label {
-        font-size: 1.5em;
+        font-size: 1.1em;
     }
 
+    .content label2 {
+        font-size: 2em;
+    }
     .content input {
         width: 100%;
         padding: 5px 10px;
@@ -287,6 +290,11 @@ img {
     width: 30px;
 }
 
+.payment-label {
+    margin: 0 0 0 0;
+    float: left;
+    padding-right: 50px;
+}
 #shipping label {
     padding: 0;
     font-size: 1.1em;
