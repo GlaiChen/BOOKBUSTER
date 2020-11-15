@@ -195,7 +195,8 @@ namespace BooksStore.Migrations
                     Publication = table.Column<string>(nullable: false),
                     Summary = table.Column<string>(nullable: true),
                     PictureName = table.Column<string>(nullable: true),
-                    GenreId = table.Column<int>(nullable: true)
+                    GenreId = table.Column<int>(nullable: true),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {

@@ -3032,8 +3032,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.ML": "1.5.0-preview",
-          "Microsoft.ML.Recommender": "0.17.0-preview"
+          "Microsoft.ML": "1.5.0-preview2",
+          "Microsoft.ML.Recommender": "0.17.0-preview2"
         },
         "compile": {
           "bin/placeholder/BooksStoreML.Model.dll": {}
@@ -9596,23 +9596,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user1\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\97254\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Chen\\Git\\Store\\BooksStore.csproj",
+      "projectUniqueName": "C:\\Users\\97254\\Documents\\GitHub\\Store\\BooksStore.csproj",
       "projectName": "BooksStore",
-      "projectPath": "C:\\Chen\\Git\\Store\\BooksStore.csproj",
-      "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Chen\\Git\\Store\\obj\\",
+      "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\Store\\BooksStore.csproj",
+      "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\97254\\Documents\\GitHub\\Store\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\97254\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9625,8 +9621,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
-              "projectPath": "C:\\Chen\\Git\\BooksStoreML.Model\\BooksStoreML.Model.csproj"
+            "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj": {
+              "projectPath": "C:\\Users\\97254\\Documents\\GitHub\\BooksStoreML.Model\\BooksStoreML.Model.csproj"
             }
           }
         }
@@ -9701,7 +9697,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   },
