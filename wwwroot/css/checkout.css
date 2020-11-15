@@ -197,7 +197,7 @@ img {
     .content button {
         display: block;
         float: none;
-        margin: 5px auto;
+        margin: 5px 0 0 40px;
         background: #80c0ff;
         width: 200px;
         border: 0;
@@ -453,6 +453,7 @@ img {
     float: left;
     border-bottom: 3px solid #aaa;
     padding-bottom: 5px;
+    margin-left: 25px;
 }
 
     .totals .subtitle {
@@ -481,7 +482,7 @@ img {
         width: 95%;
         margin-right: 5%;
         font-weight: bold;
-        margin-top: 5px;
+        margin: 5px 0 0 26px;
     }
 
 #reviewed .title {
@@ -519,7 +520,6 @@ span.method {
     float: left;
     width: 100%;
     padding-top: 5px;
-    border-top: 1px dotted #aaa;
 }
 
 #reviewed .big_button {
@@ -546,7 +546,7 @@ span.method {
     text-align: center;
     margin-top: 15px;
     width: 80%;
-    margin: 5px 0 0 0;
+    margin: 5px 0 0 18px;
 }
 
 @media(max-width:768px) {

@@ -9,13 +9,14 @@
             type: 'Get',
             dataType: 'json',
             success: function (result) {
-                $('#restuls').tmpl(result).appendTo('.order-products')
                 
                 result.forEach(function (data) {
                     total += parseFloat(data.price);
                 });
 
                 $("#order-totalPrice").append(formatToCurrency(total));
+                $("#order-tax").append(formatToCurrency(total * 0.17));
+                $("#order-totalPriceAfterTax").append(formatToCurrency(total * 1.17));
             }
         });
 }

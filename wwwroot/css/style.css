@@ -2342,6 +2342,9 @@ section.bottom-right {
 	margin-bottom: 10px;
 }
 
+.footer__widget_service {
+	margin-top: -4px;
+}
 .footer__widget ul {
 	width: 50%;
 	float: left;
@@ -2360,7 +2363,7 @@ section.bottom-right {
 .footer__widget p {
 	font-size: 14px;
 	color: #1c1c1c;
-	margin-bottom: 30px;
+	margin: 12px 0 20px 0;
 }
 
 .footer__widget form {
@@ -2407,6 +2410,7 @@ section.bottom-right {
 	transition: all, 0.3s;
 	margin-right: 10px;
 }
+
 
 .footer__widget .footer__widget__social a:last-child {
 	margin-right: 0;

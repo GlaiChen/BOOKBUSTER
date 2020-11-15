@@ -137,53 +137,14 @@
 		    </div>
 		    <div class="content" id="final_products">
 			    <div class="left" id="ordered">
-				    <div class="products">
-						@{	
-                        <div class="form-group">
-                            <input asp-for="BookId" class="input alert alert-dismissible" type="text" value="@ViewData["BookId"]" placeholder="Book Id" />
-                        </div>
-						 }
-					    <div class="product_details" action="/Orders/GetOrderDetails">
-                            @{
-                            <div class="order-summary">
-                                <div text-align="center"><strong>Id</strong>
-                                </div>
-                                <div text-align="center"><strong>Book</strong>
-                                </div>
-                                <div text-align="center"><strong>Quantity</strong>
-                                </div>
-                                <div text-align="center"><strong>Price</strong>
-                                </div>
-                            </div>
-                            }
-                            <div class="order-products">
-                            </div>
-                            <div class="order-col">
-                                <div><strong>TOTAL</strong>
-                                </div>
-                            <div>
-                                <strong class="order-total" id="order-totalPrice"></strong>
-                            </div>
-                        </div>
-						     <!--<span class="product_name">Name</span>-->
-						     <!--<span class="quantity">X</span>-->
-						     <!--<span class="price">$</span>-->
-					    </div>
-				    </div>
-				    <div class="totals">
-					    @{
-						    var GrandSubtotals=0;
-						    var Tax = Math.Round(GrandSubtotals * 0.17,2);
-						    var GradnTotal= Math.Round(GrandSubtotals + Tax,2);
-
-					    <span class="subtitle">Subtotal <span id="sub_price"></span></span><strong class="order-total" id="order-totalPrice"></strong>
-					    <span class="subtitle">Tax (17%) <span id="sub_tax">$@Tax</span></span>
-					    <span class="subtitle">Shipping <span id="sub_ship">$</span></span>
-					    }
-				    </div>
-				    <div class="final">
-					    <span class="title">Total <span id="calculated_total">$@GradnTotal</span></span>
-				    </div>
+				        <div class="totals" id="itemsShop" action="/Orders/GetOrderDetails">		    
+					        <span class="subtitle">Subtotal <span class="sub_price" id="order-totalPrice"></span></span>
+                            <span class="subtitle">Tax (17%)  <span class="sub_price" id="order-tax"></span></span>
+                            <span class="subtitle">Shipping <span class="sub_price">FREE</span></span>   
+				        </div>
+				        <div class="final">
+                            <span class="title">Total  <span class="calculated_total" id="order-totalPriceAfterTax"></span></span>
+				        </div>
 			    </div>	
 			    <div class="right" id="reviewed">
                     <div>
@@ -208,45 +169,6 @@
 </form>
 <!--Payment Cpmpletion End-->
 
-
-<form asp-action="Checkout" asp-route-userId="@ViewData["UserId"]" method="post" role="form">
-    <div class="col-md-12">
-        <!-- Billing Details -->
-        <div class="billing-details">
-            @*<div class="form-group">
-                <input asp-for="BookId" class="input alert alert-dismissible" type="text" value="@ViewData["BookId"]" placeholder="Book Id" />
-            </div>*@
-        </div>
-        <!-- /Billing Details -->
-    </div>
-    <!-- Order Details -->
-    <div class="col-md-5 order-details">
-        <div class="section-title text-center">
-            <h2 class="title">Your Order</h2>
-        </div>
-        <div id="itemsShop" action="/Orders/GetOrderDetails">
-            <div class="order-summary">
-                @*<div class="order-col">
-                    <div text-align="center"><strong>Id </strong></div>
-
-                    <div text-align="center"><strong>Book</strong></div>
-
-                    <div text-align="center"><strong>Quantity</strong></div>
-                    <div text-align="center"><strong>Price</strong></div>
-                </div>*@
-                <div class="order-products">
-                </div>
-                <div class="order-col">
-                    <div><strong>TOTAL</strong></div>
-                    <div><strong class="order-total" id="order-totalPrice">  </strong></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- /Order Details -->
-</form>
-
 @section Scripts {
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
     <script src="~/js/Checkout/displayOrderdetails.js"></script>
@@ -264,4 +186,3 @@
 
     </script>
 }
-
