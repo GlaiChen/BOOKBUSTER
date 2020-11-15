@@ -14,9 +14,7 @@ h4.checkout_h4 {
 }
 form > div {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    max-width: 320px;
 }
 
 form input {
@@ -88,10 +86,14 @@ img {
     color: #ffa903;
 }
 
+.dropdown-checkout {
+    width: 226px;
+}
+
 #wrap {
     width: 80%;
     margin: 20px 0 50px 140px;
-    background: #FFF;   
+    background: #FFF;
 }
 
 .column {
@@ -135,7 +137,7 @@ img {
         content: '';
         width: 80%;
         height: 3px;
-        background: #80c0ff;
+        background: #0e3fa9;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -156,8 +158,19 @@ img {
         font-weight: 300;
     }
 
+
+
 .content {
     padding: 2em 2em;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    display: block;
+    float: left;
+}
+
+.content2 {
+    padding: 2em 1em;
     width: 100%;
     margin: 0 auto;
     height: auto;
@@ -215,11 +228,11 @@ img {
 
 #shipping {
     border-bottom: 1px dotted #ccc;
-    padding-bottom: 4em;
+    padding-bottom: 11px;
 }
 #email {
     border-bottom: 1px dotted #ccc;
-    padding-bottom: 4em;
+    padding-bottom: 55px;
 }
 
 .select {
@@ -368,10 +381,14 @@ img {
     width: 100%;
     padding-right: 1em;
     padding-left: 1em;
-    margin-top: 30px;
+    margin-top: 30px;   
 }
 
-    .accepted span {
+.accepted img {
+    margin: 50px 0 0 28px;
+}
+
+.accepted span {
         display: table-cell;
         padding: 3px;
     }
@@ -384,8 +401,8 @@ img {
 
     .secured-text{
         float: right;
-        font-size: 1em;
-        margin-top: 22px;
+        font-size: 1.3em;
+        margin: 22px -15px 0 0;
     }
     .secured .lock {
         float: left;
@@ -529,7 +546,7 @@ span.method {
     text-align: center;
     margin-top: 15px;
     width: 80%;
-    margin: 5px auto;
+    margin: 5px 0 0 0;
 }
 
 @media(max-width:768px) {
@@ -556,9 +573,7 @@ span.method {
 
     form > div {
         position: relative;
-        overflow: hidden;
         width: 100%;
-        max-width: 320px;
     }
 
     form input, form textarea {

@@ -1,9 +1,16 @@
 ﻿@model Order
 
 <head>
-    <link rel="stylesheet" href="~/css/checkout.css" type="text/css">
+    @{
+        var random_number = new Random();
+        int rInt = random_number.Next(0, 100); //for ints
+        int range = 100;
+
+    }
+
+    <link rel="stylesheet" href="~/css/checkout.css?time=@rInt" type="text/css">
 </head>
-<body>
+
 <!-- Banner Section Begin -->
 <section class="banner-section set-bg" data-setbg="img/bluebanner.jpg">
     <div class="container">
@@ -23,152 +30,222 @@
 <!-- Banner Section End -->
 
 <!--Payment Cpmpletion Begin-->
-<div id="wrap">
-	<div id="grid">
-		<div class="column column1">
-			<div class="step" id="step1">
-				<div class="number">
-					<span>1</span>
-			</div>
-			<div class="title">
-				<h4 class="checkout_h4">Email Address</h4>
-			</div>
-		</div>
-		<div class="content" id="email">
-			<form class="go-right">
-				<div>
-        <input type="email" name="email" value="" id="email-address" data-trigger="change" data-validation-minlength="1" data-type="email" data-required="true" disabled/><label for="email">@ViewData["User"]</label>
-        </div>
-			</form>
-		</div>
-		<div class="step" id="step2">
-			<div class="number">
-				<span>2</span>
-			</div>
-			<div class="title">
-				<h4 class="checkout_h4">Delivery Info</h4>
-			</div>
-		</div>
-		<div class="content" id="address">
-			<form class="go-right">
-				<div>
-					<input type="name" name="first_name" value="" id="first_name" placeholder="First Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your First Name"/><label for="first_name">First Name</label>
-				</div>
-				<div>
-					<input type="name" name="last_name" value="" id="last_name" placeholder="Last Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Last Name"/><label for="last_name">Last Name</label>
-				</div>
-				<div>
-					<input type="phone" name="telephone" value="" id="telephone" placeholder="Phone 054-1234567" data-trigger="change" data-validation-minlength="1" data-type="number" data-required="true" data-error-message="Enter Your Telephone Number"/><label for="telephone">Telephone</label>
-				</div>
-				<div>
-					<input type="text" name="address" value="" id="address" placeholder="Address" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Address"/><label for="Address">Address</label>
-				</div>
-				<div>
-					<input type="text" name="city" value="" id="city" placeholder="City" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing City"/><label for="city">City</label>
-				</div>
-				<div>
-					<input type="text" name="zip" value="" id="zip" placeholder="Zip Code" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Zip Code"/><label for="zip">Zip Code</label>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="column column2">
-		<div class="step" id="step3">
-			<div class="number">
-				<span>3</span>
-			</div>
-			<div class="title">
-				<h4 class="checkout_h4">Shipping</h4>
-			</div>
-		</div>
-		<div class="content" id="shipping">
-			<form action="" method="" name="">
+<form asp-action="Checkout" asp-route-userId="@ViewData["UserId"]" method="post" role="form">
+    <div id="wrap">
+	    <div id="grid">
+		    <div class="column column1">
+			    <div class="step" id="step1">
+				    <div class="number">
+					    <span>1</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Email Address</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="email">
+			    <div class="form-group">
+                    <input asp-for="User" class="input alert alert-dismissible" type="text" name="email" value="@ViewData["User"]" id="email-address" data-type="email" placeholder="User Id"disabled />    
+                </div>
+		    </div>
+		    <div class="step" id="step2">
+			    <div class="number">
+				    <span>2</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Delivery Info</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="address">
+				<div class="form-group">
+                    <input asp-for="FirstName" class="input" type="text" placeholder="First Name" />
+                    <b><span asp-validation-for="FirstName" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="LastName" class="input" type="text" placeholder="Last Name" />
+                    <b><span asp-validation-for="LastName" class="text-danger"></span></b>				
+                </div>
+				<div class="form-group">
+                    <input asp-for="Address" class="input" type="text" placeholder="Street" />
+                    <b><span asp-validation-for="Address" class="text-danger"></span></b>				
+                </div>
+               <div class="form-group">
+                    <input asp-for="City" class="input" type="text" placeholder="City" />
+                    <b><span asp-validation-for="City" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Country" class="input" type="text" placeholder="Country" />
+                    <b><span asp-validation-for="Country" class="text-danger"></span></b>
+                </div>
+                <div class="form-group">
+                    <input asp-for="PhoneNumber" class="input" type="tel" placeholder="Phone-Number" />
+                    <b><span asp-validation-for="PhoneNumber" class="text-danger"></span></b>
+                </div>
+		    </div>
+	    </div>
+	    <div class="column column2">
+		    <div class="step" id="step3">
+			    <div class="number">
+				    <span>3</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Shipping</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="shipping">
 				<p>		
-					<input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Shipping Only<span class="price">(Free - COVID-19)</span></label>
+					<input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Shipping Only <span class="price">(Free - COVID-19)</span></label>
+                        <div class="form-group" style="margin-left: 40px;">
+                            <h6 style="color:#999;text-decoration:underline;font-weight:400;">Select the closest branch:</h6> <br />
+                            @Html.DropDownList("BranchId", null, htmlAttributes: new { @class = "input-select" })
+                        </div>
 				</p>
-			</form>
-		</div>
-		<div class="step" id="step4">
-			<div class="number">
-				<span>4</span>
-			</div>
-			<div class="title">
-				<h4 class="checkout_h4">Payment</h4>
-			</div>
-		</div>
-			<div class="content" id="payment label">
-				<div class="content" id="shipping">
-					<form action="" method="" name="">
-						<p>		
-							<input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Shipping Only<span class="price">(Free - COVID-19)</span></label>
-						</p>
-					</form>
-				</div>
-			</div>
-			<div class="right">
-				<div class="accepted">
-					<img src="~/img/payment-item.png">
-				</div>
-				<div class="secured">
-					<img class="lock" src="https://i.imgur.com/hHuibOR.png">
-					<span class="secured-text">Secured Payment by BOOKBUSTER ltd.</span>
-				</div>
-			</div>
- 		</div>
- 	</div>
- 	<div class="column column3">
- 		<div class="step" id="step5">
-			<div class="number">
-				<span>5</span>
-			</div>
-			<div class="title">
-				<h4 class="checkout_h4">Finalize Order</h4>
-			</div>
-		</div>
-		<div class="content" id="final_products">
-			<div class="left" id="ordered">
-				<div class="products">
-					<div class="product_image">
-						image
-					</div>
-					<div class="product_details">
-						<span class="product_name">Name</span>
-						<span class="quantity">X</span>
-						<span class="price">$</span>
-					</div>
-				</div>
-				<div class="totals">
-					@{
-						var GrandSubtotals= 0;
-						var Tax = Math.Round(GrandSubtotals * 0.17,2);
-						var GradnTotal= Math.Round(GrandSubtotals + Tax,2);
+		    </div>
+		    <div class="step" id="step4">
+			    <div class="number">
+				    <span>4</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Payment</h4>
+			    </div>
+		    </div>
+			    <div class="content" id="payment label">
+				    <div class="content2" id="shipping">
+						    <p>		
+							    <input type="radio" id="shipping_1" value="1"/><label for="shipping_1">Payment on delivery ONLY <br /> by Credit/Cash</label>
+						    </p>
+				    </div>
+			    </div>
+			    <div class="right">
+				    <div class="secured">
+					    <img class="lock" src="https://i.imgur.com/hHuibOR.png">
+					    <span class="secured-text">Secured Payment by BOOKBUSTER ltd.</span>
+				    </div>
+				    <div class="accepted">
+					    <img src="~/img/payment-item.png">
+				    </div>
+			    </div>
+ 		    </div>
+ 	    </div>
+ 	    <div class="column column3">
+ 		    <div class="step" id="step5">
+			    <div class="number">
+				    <span>5</span>
+			    </div>
+			    <div class="title">
+				    <h4 class="checkout_h4">Finalize Order</h4>
+			    </div>
+		    </div>
+		    <div class="content" id="final_products">
+			    <div class="left" id="ordered">
+				    <div class="products">
+						@{	
+                        <div class="form-group">
+                            <input asp-for="BookId" class="input alert alert-dismissible" type="text" value="@ViewData["BookId"]" placeholder="Book Id" />
+                        </div>
+						 }
+					    <div class="product_details" action="/Orders/GetOrderDetails">
+                            @{
+                            <div class="order-summary">
+                                <div text-align="center"><strong>Id</strong>
+                                </div>
+                                <div text-align="center"><strong>Book</strong>
+                                </div>
+                                <div text-align="center"><strong>Quantity</strong>
+                                </div>
+                                <div text-align="center"><strong>Price</strong>
+                                </div>
+                            </div>
+                            }
+                            <div class="order-products">
+                            </div>
+                            <div class="order-col">
+                                <div><strong>TOTAL</strong>
+                                </div>
+                            <div>
+                                <strong class="order-total" id="order-totalPrice"></strong>
+                            </div>
+                        </div>
+						     <!--<span class="product_name">Name</span>-->
+						     <!--<span class="quantity">X</span>-->
+						     <!--<span class="price">$</span>-->
+					    </div>
+				    </div>
+				    <div class="totals">
+					    @{
+						    var GrandSubtotals=0;
+						    var Tax = Math.Round(GrandSubtotals * 0.17,2);
+						    var GradnTotal= Math.Round(GrandSubtotals + Tax,2);
 
-					<span class="subtitle">Subtotal <span id="sub_price">$@GrandSubtotals</span></span>
-					<span class="subtitle">Tax (17%) <span id="sub_tax">$@Tax</span></span>
-					<span class="subtitle">Shipping <span id="sub_ship">$</span></span>
-					}
-				</div>
-				<div class="final">
-					<span class="title">Total <span id="calculated_total">$@GradnTotal</span></span>
-				</div>
-			</div>	
-			<div class="right" id="reviewed">
-				<div id="complete">
-					<button type="submit" id="placeOrder" class="button-done" disabled>Complete Order</button>
-						<div class="input-checkbox">
-							  <label for="terms">
-									<span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.<br/>
-									<input type="checkbox" id="terms" onclick="acceptTerms()">
-									I've read and accept the <a asp-action="Terms">terms & conditions</a></span>
-							</label>
-						</div>
-                 </div>
-			</div>
-		</div>
-	</div>
-</div>
-
+					    <span class="subtitle">Subtotal <span id="sub_price"></span></span><strong class="order-total" id="order-totalPrice"></strong>
+					    <span class="subtitle">Tax (17%) <span id="sub_tax">$@Tax</span></span>
+					    <span class="subtitle">Shipping <span id="sub_ship">$</span></span>
+					    }
+				    </div>
+				    <div class="final">
+					    <span class="title">Total <span id="calculated_total">$@GradnTotal</span></span>
+				    </div>
+			    </div>	
+			    <div class="right" id="reviewed">
+                    <div>
+                         <a href="/ShoppingCarts/Index">
+                            <button type="button" class="site-btn">Edit Cart</button>
+                         </a>
+                    </div>
+				    <div id="complete">
+					    <button type="submit" id="placeOrder" class="button-done" disabled>Complete Order</button>
+						    <div class="input-checkbox">
+							      <label for="terms">
+									    <span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.<br/>
+									    <input type="checkbox" id="terms" onclick="acceptTerms()">
+									    I've read and accept the <a asp-action="Terms">terms & conditions</a></span>
+							    </label>
+						    </div>
+                     </div>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+</form>
 <!--Payment Cpmpletion End-->
+
+
+<form asp-action="Checkout" asp-route-userId="@ViewData["UserId"]" method="post" role="form">
+    <div class="col-md-12">
+        <!-- Billing Details -->
+        <div class="billing-details">
+            @*<div class="form-group">
+                <input asp-for="BookId" class="input alert alert-dismissible" type="text" value="@ViewData["BookId"]" placeholder="Book Id" />
+            </div>*@
+        </div>
+        <!-- /Billing Details -->
+    </div>
+    <!-- Order Details -->
+    <div class="col-md-5 order-details">
+        <div class="section-title text-center">
+            <h2 class="title">Your Order</h2>
+        </div>
+        <div id="itemsShop" action="/Orders/GetOrderDetails">
+            <div class="order-summary">
+                @*<div class="order-col">
+                    <div text-align="center"><strong>Id </strong></div>
+
+                    <div text-align="center"><strong>Book</strong></div>
+
+                    <div text-align="center"><strong>Quantity</strong></div>
+                    <div text-align="center"><strong>Price</strong></div>
+                </div>*@
+                <div class="order-products">
+                </div>
+                <div class="order-col">
+                    <div><strong>TOTAL</strong></div>
+                    <div><strong class="order-total" id="order-totalPrice">  </strong></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Order Details -->
+</form>
 
 @section Scripts {
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
@@ -188,4 +265,3 @@
     </script>
 }
 
-</body>
