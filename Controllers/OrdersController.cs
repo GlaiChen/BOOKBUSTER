@@ -62,7 +62,7 @@ namespace BooksStore.Controllers
             if (_shoppingCart.ShoppingCartItems.Count == 0)
             {
                 //ModelState.AddModelError("", "Your cart is empty");
-                return View("Not Found");
+                return View("NotFound");
             }
 
             if (ModelState.IsValid)
