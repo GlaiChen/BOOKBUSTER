@@ -1,6 +1,6 @@
-# ------------------------
+# --------------------------
 # BOOKBUSTER Project !
-# ------------------------
+# --------------------------
 #
 # Welcome to our Web-App Programming course's final project :)
 # A website of bookstore name BOOKBUSTER, after the legendary BLOCKBUSTER video store
@@ -15,7 +15,7 @@
 #
 # Lecturer & Proect's guide:
 # ------------------------------
-# Shay Horovitz
+# Dr. Shay Horovitz
 # mail: shay.horovitz@gmail.com 
 #
 #
