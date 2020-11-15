@@ -1,8 +1,6 @@
 ﻿@model BooksStore.Models.Book
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit"; }
 
 <h1>Edit</h1>
 
@@ -13,6 +11,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookId" />
+            <input type="hidden" asp-for="RowVersion" />
             <div class="form-group">
                 <label asp-for="BookName" class="control-label"></label>
                 <input asp-for="BookName" class="form-control" />

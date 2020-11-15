@@ -36,5 +36,8 @@ namespace BooksStore.Models
 
         public virtual Genre Genre { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
     }
 }
