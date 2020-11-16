@@ -7,7 +7,7 @@
 #
 # Authors:
 # -------------
-# Chen Gleichger, Chen Shem Tov & Yarin Zeevi
+# Chen Gleichger, Chen Shem Tov, Yarin Zeevi & Ayelet Menashe
 #
 # Distribution date:
 # ----------------------
