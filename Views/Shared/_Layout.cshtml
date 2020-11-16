@@ -261,21 +261,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
   
-    @section Scripts {
-        <script src="~/js/Home/weather.js"></script>
-        <script>
-            window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
-            window.myWidgetParam.push({ id: 24, cityid: '293397', appid: '50e5e552a74c7defcc7607a0fce0fdf6', units: 'metric', containerid: 'openweathermap-widget-24', });
-            (function () {
-                var script = document.createElement('script');
-                script.async = true;
-                script.charset = "utf-8";
-                script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(script, s);
-            })();
-        
-        </script>
-    }
     </body>
 </html>

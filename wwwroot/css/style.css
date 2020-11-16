@@ -2692,12 +2692,11 @@ a:link.aaa {
 }
 
 #corona_widget {
-	margin: 15px 0 0 150px;
+	margin: 15px 0 0 0px;
 }
 
 #corona_pic{
-	margin-top: 15px;
-	height: 322px;
+	margin: 15px 0 5px 0;
 }
 
 #left-side {
